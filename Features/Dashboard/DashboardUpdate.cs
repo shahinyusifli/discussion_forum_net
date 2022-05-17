@@ -16,12 +16,16 @@ public class DashboardUpdate : ICarterModule
         app.MapPut("/dashboard/update/{topicId}",[Authorize] async (MessagesDb db, Topic updateTopic, int topicId) =>
 {
     var topicItem = await db.Topics.FindAsync(topicId);
-    
+    var messageItem = await db.Messages.FirstOrDefaultAsync(x => x.TopicId == topicId);
+
     if (topicItem is null){
         
         return Results.NotFound();
     }
-    
+    if (messageItem is null){
+        
+        return Results.NotFound();
+    }
     else {
         topicItem.TopicContent = updateTopic.TopicContent;
         await db.SaveChangesAsync();
