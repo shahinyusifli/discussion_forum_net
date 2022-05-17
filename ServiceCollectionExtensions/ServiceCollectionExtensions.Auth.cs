@@ -1,9 +1,10 @@
 namespace Microsoft.Extensions.DependencyInjection;
-
-using Serilog;
-using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
+
+
 
 public static partial class ServiceCollectionExtensions
 {
@@ -25,18 +26,25 @@ public static partial class ServiceCollectionExtensions
 
     private static IServiceCollection AddAuthentication(this IServiceCollection services)
     {
+        var builder = WebApplication.CreateBuilder();
         services.AddAuthentication(options =>
         {
             options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
             options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
         }).AddJwtBearer(options =>
         {
-            
-            options.Authority = "shahin";
-            options.Audience = "shahin";
-            options.TokenValidationParameters.ValidateLifetime = false;
-            options.TokenValidationParameters.ClockSkew = TimeSpan.Zero;
-            options.RequireHttpsMetadata = false;
+options.TokenValidationParameters = new TokenValidationParameters
+    {
+        
+        ValidateIssuer = true,
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        ValidateAudience = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
+        ValidateLifetime = false, // In any other application other then demo this needs to be true,
+        ValidateIssuerSigningKey = true
+    };
         });
 
         return services;

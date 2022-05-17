@@ -23,11 +23,6 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
-    },
-    "Jwt": {
-      "Issuer": "sahin",
-      "Audience": "sahin",
-      "Key": "1234"
-  }
+    }
   }
 }

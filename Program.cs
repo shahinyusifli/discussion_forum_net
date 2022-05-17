@@ -1,4 +1,3 @@
-using Microsoft.Extensions.Primitives;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,10 +17,9 @@ var environment = app.Environment;
 app
     .UseExceptionHandling(environment)
     .UseSwaggerEndpoints(routePrefix: string.Empty)
-    .UseAppCors();
-    //.UseAuthentication()
-    //.UseAuthorization();
-app.UseAuthorization();
+    .UseAppCors()
+    .UseAuthentication()
+    .UseAuthorization();
 
 app.MapCarter();
 
