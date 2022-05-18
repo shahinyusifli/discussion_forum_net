@@ -3,25 +3,26 @@ using DevAcademyAssigment.Models;
 //using Microsoft.EntityFrameworkCore;
 
 
-///public class DashboardDelete : ICarterModule
-///{
-    //public void AddRoutes(IEndpointRouteBuilder app)
+
+//public class  DashboardDelete : ICarterModule
+//{
+  //  public void AddRoutes(IEndpointRouteBuilder app)
     //{
         
-             //app.MapDelete("/dashboard/delete/{topicId}", async ( MessagesDb db, Topic deleteTopic, string topicId) =>
+      //       app.MapDelete("/dashboard/delete/{topicId}", async ( MessagesDb db, Topic deleteTopic, int topicId) =>
 //{
     //var topicItem = await db.Topics.FindAsync(topicId);
     
-    //if (topicItem is null){
+   // if (topicItem is null){
         
-      //  return Results.NotFound();
-  ///  }
+     //   return Results.NotFound();
+    //}
     
-   // else {
+    //else {
       //  topicItem.TopicContent = deleteTopic.TopicContent;
-//        await db.SaveChangesAsync();
-      //  return Results.NoContent();
-  //  }
+        //await db.SaveChangesAsync();
+        //return Results.NoContent();
+    //}
     
    
     
