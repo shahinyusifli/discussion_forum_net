@@ -8,7 +8,7 @@ public class TopicPost : ICarterModule
     {
         app.MapPost("/topic/post", async (Topic topic, MessagesDb db) =>
         {
-           Console.WriteLine("hello: "+topic.TopicId);
+           
             await db.Topics.AddAsync(topic);
             await db.SaveChangesAsync();
             return Results.Created($"/topic/get/{topic.TopicId}", topic);

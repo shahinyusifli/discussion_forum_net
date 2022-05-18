@@ -32,6 +32,9 @@ namespace MinimalAPI.Migrations
                     b.Property<int>("TopicId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("MessageId");
 
                     b.ToTable("Messages");
@@ -58,6 +61,9 @@ namespace MinimalAPI.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Email")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("HashCode")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Password")

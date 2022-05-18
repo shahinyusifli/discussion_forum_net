@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MinimalAPI.Migrations
 {
     [DbContext(typeof(MessagesDb))]
-    [Migration("20220516131640_InitialCreate")]
+    [Migration("20220518075852_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,6 +32,9 @@ namespace MinimalAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<int>("TopicId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("UserId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("MessageId");
@@ -60,6 +63,9 @@ namespace MinimalAPI.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Email")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("HashCode")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Password")

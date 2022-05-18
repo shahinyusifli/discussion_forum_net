@@ -17,7 +17,8 @@ namespace MinimalAPI.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     MessageContent = table.Column<string>(type: "TEXT", nullable: true),
                     Date = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    TopicId = table.Column<int>(type: "INTEGER", nullable: false)
+                    TopicId = table.Column<int>(type: "INTEGER", nullable: false),
+                    UserId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -45,7 +46,8 @@ namespace MinimalAPI.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     UserName = table.Column<string>(type: "TEXT", nullable: true),
                     Password = table.Column<string>(type: "TEXT", nullable: true),
-                    Email = table.Column<string>(type: "TEXT", nullable: true)
+                    Email = table.Column<string>(type: "TEXT", nullable: true),
+                    HashCode = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {

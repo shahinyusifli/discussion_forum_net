@@ -8,6 +8,7 @@ namespace DevAcademyAssigment.Models
       public string? MessageContent { get; set; }
       public DateTime? Date { get; set;  }
       public int TopicId { get; set; }
+      public int UserId { get; set; }
     
   }
 
@@ -26,7 +27,8 @@ namespace DevAcademyAssigment.Models
       public string? UserName { get; set; }
       public string? Password { get; set; }
       public string? Email { get; set; }
-      
+      public string? HashCode {get; set;}
+      public string? Role {get; set;}
   }
 
   class MessagesDb : DbContext
