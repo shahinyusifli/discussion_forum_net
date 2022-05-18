@@ -33,6 +33,7 @@ public static partial class ServiceCollectionExtensions
             options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
         }).AddJwtBearer(options =>
+        
         {
 options.TokenValidationParameters = new TokenValidationParameters
     {
@@ -42,7 +43,7 @@ options.TokenValidationParameters = new TokenValidationParameters
         ValidAudience = builder.Configuration["Jwt:Audience"],
         ValidateAudience = true,
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
-        ValidateLifetime = false, // In any other application other then demo this needs to be true,
+        ValidateLifetime = true, // In any other application other then demo this needs to be true,
         ValidateIssuerSigningKey = true
     };
         });
