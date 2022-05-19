@@ -43,7 +43,7 @@ options.TokenValidationParameters = new TokenValidationParameters
         ValidAudience = builder.Configuration["Jwt:Audience"],
         ValidateAudience = true,
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
-        ValidateLifetime = true, // In any other application other then demo this needs to be true,
+        ValidateLifetime = false, // In any other application other then demo this needs to be true,
         ValidateIssuerSigningKey = true
     };
         });
