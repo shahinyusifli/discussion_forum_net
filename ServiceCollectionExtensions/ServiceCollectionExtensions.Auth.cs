@@ -8,6 +8,9 @@ using Microsoft.IdentityModel.Tokens;
 
 public static partial class ServiceCollectionExtensions
 {
+
+
+    
     public static WebApplicationBuilder AddAuthentication(this WebApplicationBuilder builder)
     {
         AddAuthentication(builder.Services);
@@ -44,7 +47,8 @@ options.TokenValidationParameters = new TokenValidationParameters
         ValidateAudience = true,
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
         ValidateLifetime = false, // In any other application other then demo this needs to be true,
-        ValidateIssuerSigningKey = true
+        ValidateIssuerSigningKey = true,
+       
     };
         });
 

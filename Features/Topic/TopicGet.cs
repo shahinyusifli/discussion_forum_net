@@ -1,13 +1,22 @@
 namespace MinimalAPI.Features;
 using DevAcademyAssigment.Models;
-using Microsoft.EntityFrameworkCore;
+using System.IdentityModel.Tokens.Jwt;
+
+using System.Text;
+
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using Microsoft.IdentityModel.Tokens;
+
+
+
 
 
 public class TopicGet : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet("/topic/get", (MessagesDb db) => db.Topics.Join(
+        app.MapGet("/topic/get", [Authorize(Roles="admin")] (MessagesDb db) => db.Topics.Join(
             db.Messages,
             topic => topic.TopicId,
             message => message.TopicId,
