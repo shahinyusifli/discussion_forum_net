@@ -20,8 +20,14 @@ public class UserSignIn : ICarterModule
 {
     var builder = WebApplication.CreateBuilder();
 
-    if (db.Users.Any(c => c.UserName == user.UserName && c.Password == user.Password && c.Role == user.Role))
+    if (db.Users.Any(c => c.UserName == user.UserName && c.Password == user.Password))
     {
+
+        var role = db.Users.Where(c => c.UserName == user.UserName && c.Password == user.Password)
+                                          .Select(s => 
+                                          
+                                              $"Role = {s.Role}"    
+                                          ).FirstOrDefault();
 
         
 
@@ -30,7 +36,7 @@ public class UserSignIn : ICarterModule
                     new Claim(ClaimTypes.Name, user.UserName),
                     new Claim(ClaimTypes.Email, user.Email),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                    new Claim(ClaimTypes.Role as String, user.Role),
+                    new Claim(ClaimTypes.Role, role),
                 };
 
         var issuer = builder.Configuration["Jwt:Issuer"];
