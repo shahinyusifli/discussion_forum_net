@@ -16,7 +16,7 @@ public class TopicGet : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet("/topic/get", [Authorize(Roles="admin")] (MessagesDb db) => db.Topics.Join(
+        app.MapGet("/topic/get", [Authorize] (MessagesDb db) => db.Topics.Join(
             db.Messages,
             topic => topic.TopicId,
             message => message.TopicId,
