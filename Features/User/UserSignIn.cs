@@ -26,7 +26,7 @@ public class UserSignIn : ICarterModule
         var role = db.Users.Where(c => c.UserName == user.UserName && c.Password == user.Password)
                                           .Select(s => 
                                           
-                                              $"Role = {s.Role}"    
+                                              s.Role
                                           ).FirstOrDefault();
 
         

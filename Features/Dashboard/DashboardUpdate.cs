@@ -28,6 +28,7 @@ public class DashboardUpdate : ICarterModule
     }
     else {
         topicItem.TopicContent = updateTopic.TopicContent;
+        
         await db.SaveChangesAsync();
         return Results.NoContent();
     }

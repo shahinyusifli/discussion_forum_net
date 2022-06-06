@@ -8,10 +8,6 @@ using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 
-
-
-
-
 public class TopicGet : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
@@ -22,9 +18,14 @@ public class TopicGet : ICarterModule
             message => message.TopicId,
             (topic, message) => new
             {
-                TopicId = topic.TopicId,
+                MessageId = message.MessageId,
                 MessageName = message.MessageContent,
-                TopicName = topic.TopicContent
+                TopicName = topic.TopicContent,
+                messageDate = message.Date,
+                TopicId = topic.TopicId,
+                UserId = message.UserId,
+                userName = db.Users.FirstOrDefault(x => x.UserId == message.UserId).UserName,
+                userRole = db.Users.FirstOrDefault(x => x.UserId == message.UserId).Role
             }
         ).ToList());
     }

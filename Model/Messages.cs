@@ -8,7 +8,7 @@ namespace DevAcademyAssigment.Models
       public string? MessageContent { get; set; }
       public DateTime? Date { get; set;  }
       public int TopicId { get; set; }
-      public int UserId { get; set; }
+      public int? UserId { get; set; }
     
   }
 

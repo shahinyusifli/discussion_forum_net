@@ -18,7 +18,7 @@ public class DashboardGet : ICarterModule
                 MessageName = message.MessageContent,
                 TopicName = topic.TopicContent,
                 DateOfMessage = message.Date,
-
+                
 
             }
         ).GroupBy(topic => topic.TopicName)

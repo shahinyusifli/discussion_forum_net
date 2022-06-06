@@ -18,7 +18,7 @@ public class TopicUpdates : ICarterModule
     
     else {
         messageItem.MessageContent = updateMessage.MessageContent;
-    
+        messageItem.Date = updateMessage.Date;
         await db.SaveChangesAsync();
         return Results.NoContent();
     }
