@@ -13,16 +13,13 @@ public class UserSignUp : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        
 
-        app.MapPost("/user/signup",
-[AllowAnonymous] async (MessagesDb db, User user) =>
+
+        app.MapPost("/user/signup", [AllowAnonymous] async (MessagesDb db, User user) =>
 {
-    var builder = WebApplication.CreateBuilder();
-        
-          await db.Users.AddAsync(user);
-          await db.SaveChangesAsync();
+        var builder = WebApplication.CreateBuilder();
+        await db.Users.AddAsync(user);
+        await db.SaveChangesAsync();
 });
-
     }
 }

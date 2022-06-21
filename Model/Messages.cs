@@ -12,7 +12,17 @@ namespace DevAcademyAssigment.Models
     
   }
 
-
+[Keyless]
+    public class Topic_get 
+  {
+      public int TopicId { get; set; }
+      public string? TopicContent { get; set; }
+      public string? TotalMessages { get; set; }
+      public DateTime? TimeOfLastMessage { get; set;  }
+      
+     
+    
+  }
 
   public class Topic
   {
@@ -27,7 +37,6 @@ namespace DevAcademyAssigment.Models
       public string? UserName { get; set; }
       public string? Password { get; set; }
       public string? Email { get; set; }
-      public string? HashCode {get; set;}
       public string? Role {get; set;}
   }
 
@@ -36,7 +45,8 @@ namespace DevAcademyAssigment.Models
     public MessagesDb(DbContextOptions options) : base(options) { }
     public DbSet<Message> Messages { get; set; }
     public DbSet<Topic> Topics { get; set; }
-    public DbSet<User> Users { get; set; }
-    
+    public DbSet<User> ?Users { get; set; }
+
+    public DbSet<Topic_get> Topic_Gets { get; set; }
 }
 }

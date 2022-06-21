@@ -15,26 +15,18 @@ public class UserSignIn : ICarterModule
     {
 
 
-        app.MapPost("/user/sigin",
-[AllowAnonymous] (User user, MessagesDb db) =>
+app.MapPost("/user/sigin",[AllowAnonymous] (User user, MessagesDb db) =>
 {
     var builder = WebApplication.CreateBuilder();
 
     if (db.Users.Any(c => c.UserName == user.UserName && c.Password == user.Password))
     {
-
         var role = db.Users.Where(c => c.UserName == user.UserName && c.Password == user.Password)
-                                          .Select(s => 
-                                          
-                                              s.Role
-                                          ).FirstOrDefault();
-
-        
+                                          .Select(s =>s.Role).FirstOrDefault();
 
         var authClaims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, user.UserName),
-        
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                     new Claim(ClaimTypes.Role, role),
                 };
